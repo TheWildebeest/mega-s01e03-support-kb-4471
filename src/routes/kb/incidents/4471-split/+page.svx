@@ -2,7 +2,7 @@
 layout: runbook
 title: '#4471 is two problems, not one'
 owner: support desk
-status: draft
+status: closed
 reviewed: 2026-11-03
 signature: v1.eyJzdWIiOiI2MDYyIiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTM2NjY5NTMsImV4cCI6MTc5Mzc1MzM1M30.fnzXH2CuX2h4C607TxstN9ik778QplAe-TYF8xT7Ijs
 ---
@@ -22,15 +22,15 @@ from the export, not typed.
 ## The problems
 
 1. **Parser.** The shared parser reads every date month first. Day-first tenants get flipped
-   dates. This is the bug #4471 describes.
+   dates. This is the bug #4471 describes. Engineering fixed it (`fix(dates): parse dd/mm for eu locales`).
 2. **Booking-v3 hint.** The booking-v3 form prints `MM/DD/YYYY` under the date field. People at
    day-first tenants (copper.studio, alder.physio, pale.harbour) type month first. This is a
-   different bug and a different fix: the form, not the parser.
+   different bug and a different fix: the form, not the parser. Engineering closed it as won't fix: the booking-v3 form is retired.
 
 Five reports read as a one-day move. The desk counts them under `parser`, by tenant.
 
 <Callout>
-Only the first problem belongs in #4471. The booking-v3 hint has a ticket of its own.
+Only the first problem belongs in #4471. The booking-v3 hint was a separate problem with a ticket of its own.
 </Callout>
 
 ## Why they were merged
