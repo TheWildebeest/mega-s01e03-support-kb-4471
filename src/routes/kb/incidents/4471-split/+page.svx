@@ -1,6 +1,6 @@
 ---
 layout: runbook
-title: '#4471 is three problems, not one'
+title: '#4471 is two problems, not one'
 owner: support desk
 status: draft
 reviewed: 2026-11-03
@@ -14,7 +14,7 @@ signature: v1.eyJzdWIiOiI2MDYyIiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYX
 </script>
 
 [#4471](/kb/incidents/4471) merged 412 reports as one date bug. Read against each report's
-tenant (its locale and booking form), they hold three problems. The counts below are computed
+tenant (its locale and booking form), they hold two problems. The counts below are computed
 from the export, not typed.
 
 <ProblemSplit ticket={4471} />
@@ -26,17 +26,17 @@ from the export, not typed.
 2. **Booking-v3 hint.** The booking-v3 form prints `MM/DD/YYYY` under the date field. People at
    day-first tenants (copper.studio, alder.physio, pale.harbour) type month first. This is a
    different bug and a different fix: the form, not the parser.
-3. **One-day move.** Dates land one day off, not a month flipped. The desk noted five such
-   reports. The count by tenant files them under `parser`, which is wrong.
+
+Five reports read as a one-day move. The desk counts them under `parser`, by tenant.
 
 <Callout>
-Only the first problem belongs in #4471. The other two have a ticket of their own.
+Only the first problem belongs in #4471. The booking-v3 hint has a ticket of its own.
 </Callout>
 
 ## Why they were merged
 
 [Decision 0001](/kb/decisions/0001-dedupe-by-subject) merges on subject line alone. Subjects
-like "Date is wrong" fit all three problems, and intake's browser guess (`intakeTag`) marked
+like "Date is wrong" fit both problems, and intake's browser guess (`intakeTag`) marked
 every report `parser`. Count causes by tenant locale and form, not by subject or tag.
 
 <RenderStamp {signature} />
